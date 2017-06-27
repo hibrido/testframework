@@ -30,7 +30,7 @@ class DigitalPianism_TestFramework_Helper_Magento
     /**
      * Bootstrap Magento application
      */
-    public static function bootstrap($root = null)
+    public static function bootstrap($root = null, $code = '', $type = 'store', $options = [])
     {
         if (is_null($root)) {
             $root = __DIR__ . '/../../../../';
@@ -38,7 +38,7 @@ class DigitalPianism_TestFramework_Helper_Magento
         
         require_once rtrim($root, '/') . '/app/Mage.php';
         self::patchMagentoAutoloader();
-        self::init();
+        self::init($code, $type, $options);
     }
 
     /**
