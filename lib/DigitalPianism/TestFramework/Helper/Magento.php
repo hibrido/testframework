@@ -44,18 +44,23 @@ class DigitalPianism_TestFramework_Helper_Magento
     /**
      * Reset application
      */
-    public function reset()
+    public function reset($code = '', $type = 'store', $options = [])
     {
         Mage::reset();
-        self::init();
+        self::init($code, $type, $options);
     }
 
     /**
      * Initialize application
      */
-    public static function init()
+    public static function init($code = '', $type = 'store', $options = [])
     {
-        Mage::app('', 'store', ['config_model' => DigitalPianism_TestFramework_Model_Config::class]);
+        $options = array_merge(
+            ['config_model' => DigitalPianism_TestFramework_Model_Config::class],
+            $options
+        );
+        
+        Mage::app($code, $type, $options);
         Mage::setIsDeveloperMode(true);
         self::patchMagentoAutoloader();
         $_SESSION = [];
