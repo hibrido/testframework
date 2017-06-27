@@ -33,10 +33,10 @@ class DigitalPianism_TestFramework_Helper_Magento
     public static function bootstrap($root = null)
     {
         if (is_null($root)) {
-            $root = __DIR__ . '/../../../..';
+            $root = __DIR__ . '/../../../../';
         }
         
-        require_once $root . '/app/Mage.php';
+        require_once rtrim($root, '/') . '/app/Mage.php';
         self::patchMagentoAutoloader();
         self::init();
     }
