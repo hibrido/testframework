@@ -12,9 +12,6 @@ class DigitalPianism_TestFramework_Controller_TestHelper
      */
     final protected function dispatchRequest($module, $controller, $action, $store = '')
     {
-        Mage::app()->setCurrentStore($store);
-        Mage::app()->setRequest(new Mage_Core_Controller_Request_Http);
-        
         $request = Mage::app()->getRequest();
         $request->setModuleName($module);
         $request->setControllerName($controller);
